@@ -74,6 +74,19 @@ TEST(Collatz, solve) {
     collatz_solve(r, w);
     ASSERT_EQ("1 10 1\n100 200 1\n201 210 1\n900 1000 1\n", w.str());}
 
+TEST(Collatz, solve_2) {
+    istringstream r("1 10\n100 200\n");
+    ostringstream w;
+    collatz_solve(r, w);
+    ASSERT_EQ("1 10 20\n100 200 125\n", w.str());}
+
+
+TEST(Collatz, solve_3) {
+    istringstream r("201 210\n");
+    ostringstream w;
+    collatz_solve(r, w);
+    ASSERT_EQ("201 210 89\n", w.str());}
+
 /*
 % ls -al /usr/include/gtest/
 ...
