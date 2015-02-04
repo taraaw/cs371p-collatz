@@ -18,6 +18,20 @@
 
 using namespace std;
 
+int cache_size = 100000;
+int cache[cache_size] = {0};
+
+// -----
+// Cache
+// -----
+
+void initialize_cache(){
+    for(int i = 1; i <= cache_size; ++i)
+    {
+        cache[i] = max_cycle(i);
+    }
+}
+
 // ------------
 // collatz_read
 // ------------
@@ -38,8 +52,12 @@ int max_cycle(int n)
     int count = 1;
     if(n == 1)
         break;
-    while(n > 0)
+    while(n > 1)
     {
+        if(n <= cache_size && cache[n] != 0)
+        {
+            return cache[n] + (count - 1);
+        }
         if(n%2 != 0)
         {
             n = 3*n + 1;
@@ -60,7 +78,7 @@ int collatz_eval (int i, int j)
     assert(j < 100000);
     int sum = 1;
     int max = 1;
-    for(int beg = i; beg <= j; beg++)
+    for(int beg = i; beg <= j; ++beg)
     {
         sum = max_cycle(beg);
         if(sum>max)
@@ -68,6 +86,7 @@ int collatz_eval (int i, int j)
     }
     return max;
 }
+
 
 
 // -------------
@@ -114,6 +133,7 @@ void collatz_solve (istream& r, ostream& w) {
 
 int main () {
     using namespace std;
+    initialize_cache();
     collatz_solve(cin, cout);
     return 0;}
 
