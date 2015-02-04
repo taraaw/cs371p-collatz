@@ -14,23 +14,15 @@
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
 
-#include "Collatz.h"
+// #include "Collatz.h"
 
 using namespace std;
 
-int cache_size = 100000;
-int cache[cache_size] = {0};
+#define cache_size 100000
+int cache[cache_size];
 
-// -----
-// Cache
-// -----
 
-void initialize_cache(){
-    for(int i = 1; i <= cache_size; ++i)
-    {
-        cache[i] = max_cycle(i);
-    }
-}
+int max_cycle(int n);
 
 // ------------
 // collatz_read
@@ -50,40 +42,80 @@ pair<int, int> collatz_read (const string& s) {
 int max_cycle(int n)
 {
     int count = 1;
-    if(n == 1)
-        break;
     while(n > 1)
     {
-        if(n <= cache_size && cache[n] != 0)
+        if(n <= cache_size && cache[n]!=0)
         {
             return cache[n] + (count - 1);
         }
         if(n%2 != 0)
         {
             n = 3*n + 1;
+            count++;
         }
         else
         {
             n = n/2;
+            count++;
         }
-        count++;
     }
     return count;
 }
 
+// -----
+// Cache
+// -----
+
+// int implement_cache(int n)
+// {
+//     if(n == 1)
+//     {
+//         return 1;
+//     }
+//     else if( n < cache_size && cache[n] != 0)
+//     {
+//         return cache[n];
+//     }
+//     else
+//     {
+//         if(n%2 != 0)
+//         {
+//             return (3*n +1)/2 < cache_size ? cache[3*n+1] = implement_cache((3*n +1)/2)+2 : implement_cache((3*n +1)/2)+2;
+//         }
+//         else
+//         {
+//             return n/2 < cache_size ? cache[n/2] = implement_cache(n/2)+1 : implement_cache(n/2) + 1;
+//         }
+//     }
+// }
+
 int collatz_eval (int i, int j)
 {
-    assert(j >= i);
-    assert(i > 0);
-    assert(j < 100000);
+    assert(i > 0 && i < 100000);
+    assert(j > 0 && j < 100000);
     int sum = 1;
     int max = 1;
-    for(int beg = i; beg <= j; ++beg)
+    if(j >= i)
     {
-        sum = max_cycle(beg);
-        if(sum>max)
-            max == sum;
+        for(int beg = i; beg <= j; ++beg)
+        {
+            sum = max_cycle(beg);
+            // sum = implement_cache(beg);
+            if(sum>max)
+                max = sum;
+        }
     }
+    else
+    {
+        for(int beg = j; beg <= i; ++beg)
+        {
+            sum = max_cycle(beg);
+            // sum = implement_cache(beg);
+            if(sum>max)
+                max = sum;
+        }
+    }
+
     return max;
 }
 
@@ -133,7 +165,10 @@ void collatz_solve (istream& r, ostream& w) {
 
 int main () {
     using namespace std;
-    initialize_cache();
+    for(int i = 0; i < cache_size; ++i)
+    {
+        cache[i] = max_cycle(i);
+    }
     collatz_solve(cin, cout);
     return 0;}
 
@@ -175,4 +210,3 @@ int main () {
 % doxygen Doxyfile
 // That creates the directory html/.
 */
-'
