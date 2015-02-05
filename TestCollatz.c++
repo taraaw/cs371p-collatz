@@ -29,29 +29,58 @@ using namespace std;
 // read
 // ----
 
-TEST(Collatz, read) {
+TEST(Collatz, read_1) {
     string s("1 10\n");
     const pair<int, int> p = collatz_read(s);
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
 
-TEST(Collatz, read) {
+TEST(Collatz, read_2) {
     string s("100 200\n");
     const pair<int, int> p = collatz_read(s);
     ASSERT_EQ(100, p.first);
     ASSERT_EQ(200, p.second);}
 
-TEST(Collatz, read) {
+TEST(Collatz, read_3) {
     string s("201 210\n");
     const pair<int, int> p = collatz_read(s);
     ASSERT_EQ(201, p.first);
     ASSERT_EQ(210, p.second);}
 
-TEST(Collatz, read) {
+TEST(Collatz, read_4) {
     string s("900 1000\n");
     const pair<int, int> p = collatz_read(s);
     ASSERT_EQ(900, p.first);
     ASSERT_EQ(1000, p.second);}
+
+//for large range
+TEST(Collatz, read_5) {
+    string s("1 999999\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ(1, p.first);
+    ASSERT_EQ(999999, p.second);}
+
+//for same range
+TEST(Collatz, read_6) {
+    string s("3 3\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ(3, p.first);
+    ASSERT_EQ(3, p.second);}
+
+//with big space
+TEST(Collatz, read_7) {
+    string s("1         10\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ(1, p.first);
+    ASSERT_EQ(10, p.second);}
+
+//reversed range
+TEST(Collatz, read_8) {
+    string s("210 201\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ(210, p.first);
+    ASSERT_EQ(201, p.second);}
+
 
 // ----
 // eval
@@ -59,19 +88,39 @@ TEST(Collatz, read) {
 
 TEST(Collatz, eval_1) {
     const int v = collatz_eval(1, 10);
-    ASSERT_EQ(1, v);}
+    ASSERT_EQ(20, v);}
 
 TEST(Collatz, eval_2) {
     const int v = collatz_eval(100, 200);
-    ASSERT_EQ(1, v);}
+    ASSERT_EQ(125, v);}
 
 TEST(Collatz, eval_3) {
     const int v = collatz_eval(201, 210);
-    ASSERT_EQ(1, v);}
+    ASSERT_EQ(89, v);}
 
 TEST(Collatz, eval_4) {
     const int v = collatz_eval(900, 1000);
-    ASSERT_EQ(1, v);}
+    ASSERT_EQ(174, v);}
+
+//largest range
+TEST(Collatz, eval_5) {
+    const int v = collatz_eval(1, 999999);
+    ASSERT_EQ(476, v);}
+
+//same range
+TEST(Collatz, eval_6) {
+    const int v = collatz_eval(3, 3);
+    ASSERT_EQ(8, v);}
+
+//big space
+TEST(Collatz, eval_7) {
+    const int v = collatz_eval(1, 10);
+    ASSERT_EQ(20, v);}
+
+//range reversed
+TEST(Collatz, eval_8) {
+    const int v = collatz_eval(210, 201);
+    ASSERT_EQ(89, v);}
 
 // -----
 // print
@@ -101,29 +150,32 @@ TEST(Collatz, print) {
 // solve
 // -----
 
-TEST(Collatz, solve) {
+TEST(Collatz, solve_1) {
     istringstream r("1 10\n100 200\n201 210\n900 1000\n");
     ostringstream w;
     collatz_solve(r, w);
     ASSERT_EQ("1 10 1\n100 200 1\n201 210 1\n900 1000 1\n", w.str());}
 
-// TEST(Collatz, solve_2) {
-//     istringstream r("1 10\n100 200\n");
-//     ostringstream w;
-//     collatz_solve(r, w);
-//     ASSERT_EQ("1 10 20\n100 200 125\n", w.str());}
+//large range
+TEST(Collatz, solve_2) {
+    istringstream r("1 999999\n");
+    ostringstream w;
+    collatz_solve(r, w);
+    ASSERT_EQ("1 999999 476\n", w.str());}
 
-// TEST(Collatz, solve_3) {
-//     istringstream r("201 210\n");
-//     ostringstream w;
-//     collatz_solve(r, w);
-//     ASSERT_EQ("201 210 89\n", w.str());}
+//same range
+ TEST(Collatz, solve_3) {
+     istringstream r("1 1\n2 2\n3 3\n");
+     ostringstream w;
+     collatz_solve(r, w);
+     ASSERT_EQ("1 1 1\n2 2 2\n3 3 8\n", w.str());}
 
-// TEST(Collatz, solve_4) {
-//     istringstream r("900 1000\n");
-//     ostringstream w;
-//     collatz_solve(r, w);
-//     ASSERT_EQ("900 1000 174\n", w.str());}
+//reverse range
+ TEST(Collatz, solve_4) {
+     istringstream r("10 1\n200 100\n210 201\n1000 900\n");
+     ostringstream w;
+     collatz_solve(r, w);
+     ASSERT_EQ("10 1 20\n200 100 125\n210 201 89\n1000 900 174\n", w.str());}
 
 /*
 % ls -al /usr/include/gtest/

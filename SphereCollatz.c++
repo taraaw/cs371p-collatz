@@ -18,7 +18,7 @@
 
 using namespace std;
 
-#define cache_size 100000
+#define cache_size 1000000
 int cache[cache_size];
 
 
@@ -91,8 +91,8 @@ int max_cycle(int n)
 
 int collatz_eval (int i, int j)
 {
-    assert(i > 0 && i < 100000);
-    assert(j > 0 && j < 100000);
+    assert(i > 0 && i < 1000000);
+    assert(j > 0 && j < 1000000);
     int sum = 1;
     int max = 1;
     if(j >= i)
