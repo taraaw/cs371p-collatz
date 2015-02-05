@@ -35,6 +35,7 @@ pair<int, int> collatz_read (const string& s) {
 
 int max_cycle(int n)
 {
+    assert(n!=0);
     int count = 1;
     while(n > 1)
     {
@@ -76,7 +77,7 @@ int collatz_eval (int i, int j)
                 max = sum;
         }
     }
-    
+    assert( max!=0);    
     return max;
 }
 
