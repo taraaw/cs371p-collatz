@@ -1,33 +1,8 @@
-commit d4d9adff2e8fa98d74748506f5a34750a371c750
-Author: Tara Awad <tara@cs.utexas.edu>
-Date:   Thu Feb 5 19:56:51 2015 -0600
-
-    public test repo files
-
-commit 6b96e27c5330c42a49e884f0660c933c5b400ef0
-Author: Tara Awad <tara@cs.utexas.edu>
-Date:   Thu Feb 5 19:31:27 2015 -0600
-
-    created doxygen documentation and added 100 acceptance tests
-
-commit fe03c5583ae9734717d34b1836379b3cff096a3c
-Merge: ed0dc4b b5b9739
-Author: Tara Awad <tara@cs.utexas.edu>
-Date:   Thu Feb 5 13:26:00 2015 -0600
-
-    Fixes #22
-
-commit ed0dc4bd2419986f872f872fe1cf0d7c2fa9ca37
-Author: Tara Awad <tara@cs.utexas.edu>
-Date:   Thu Feb 5 13:20:59 2015 -0600
-
-    Fixes #22
-
 commit b5b973957353d63fd5643566b8f651e5d8040922
 Author: taraaw <tara.aw@hotmail.com>
 Date:   Thu Feb 5 10:14:52 2015 -0600
 
-    Fixes #17
+    Fixes #17, #22
 
 commit 26cc559b26fabed8b9bcc4be6a38056f9609579e
 Author: taraaw <tara.aw@hotmail.com>
@@ -82,4 +57,3 @@ Author: taraaw <tara.aw@hotmail.com>
 Date:   Thu Jan 29 17:18:01 2015 -0600
 
     first commit
-
