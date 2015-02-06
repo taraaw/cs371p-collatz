@@ -1,0 +1,59 @@
+commit b5b973957353d63fd5643566b8f651e5d8040922
+Author: taraaw <tara.aw@hotmail.com>
+Date:   Thu Feb 5 10:14:52 2015 -0600
+
+    Fixes #17, #22
+
+commit 26cc559b26fabed8b9bcc4be6a38056f9609579e
+Author: taraaw <tara.aw@hotmail.com>
+Date:   Thu Feb 5 09:39:48 2015 -0600
+
+    Fixes #13
+
+commit a65104ecabd39217a19c30a394ff884f52d46cc1
+Author: Tara Awad <tara@cs.utexas.edu>
+Date:   Wed Feb 4 10:35:09 2015 -0600
+
+    sphere collatz works
+
+commit b57ec03fd61db3d48aa06d9fed0cfc6249ef4f4c
+Author: taraaw <tara.aw@hotmail.com>
+Date:   Tue Feb 3 18:19:10 2015 -0600
+
+    added cash to spherecollatz
+
+commit fa5f84c507a87cfe75fa6fffd30050e2f118ff53
+Author: taraaw <tara.aw@hotmail.com>
+Date:   Tue Feb 3 17:52:36 2015 -0600
+
+    updated collatz_eval from collatz to spherecollatz
+
+commit fdf72502a4bd50113100dda5474e19d6cadef2f0
+Author: taraaw <tara.aw@hotmail.com>
+Date:   Tue Feb 3 17:49:42 2015 -0600
+
+    added solve test cases in test collatz. need to print and read them
+
+commit 6f908a38a7fc733f5e2c027ef5475ff9024cbe9d
+Author: taraaw <tara.aw@hotmail.com>
+Date:   Tue Feb 3 17:04:27 2015 -0600
+
+    implemented collatz_eval in collaz
+
+commit ef87e2803250deee00d7226d904d691b2877a18d
+Author: Tara Awad <tara@cs.utexas.edu>
+Date:   Sun Feb 1 17:16:05 2015 -0600
+
+    SphereCollatz created
+
+commit 6e0ceb10e097381c4ca7ddb5eae7de39027dfe4d
+Author: taraaw <tara.aw@hotmail.com>
+Date:   Thu Jan 29 18:07:16 2015 -0600
+
+    Adding code from the class repo
+
+commit 13424caa00abce077aa124df642b049192f1fe3e
+Author: taraaw <tara.aw@hotmail.com>
+Date:   Thu Jan 29 17:18:01 2015 -0600
+
+    first commit
