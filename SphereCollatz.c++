@@ -18,7 +18,7 @@
 
 using namespace std;
 
-#define cache_size 1000000
+#define cache_size 100000
 int cache[cache_size];
 
 
@@ -48,12 +48,12 @@ int max_cycle(int n)
         {
             return cache[n] + (count - 1);
         }
-        if(n%2 != 0) //for odd numbers
+        if(n%2 != 0)
         {
             n = 3*n + 1;
             count++;
         }
-        else //for even numbers
+        else
         {
             n = n/2;
             count++;
@@ -91,31 +91,31 @@ int max_cycle(int n)
 
 int collatz_eval (int i, int j)
 {
-    assert(i > 0 && i < 1000000); // i and j should be less than 1000000 and greater than 1
-    assert(j > 0 && j < 1000000);
+    assert(i > 0 && i < 100000);
+    assert(j > 0 && j < 100000);
     int sum = 1;
     int max = 1;
     if(j >= i)
     {
-        for(int beg = i; beg <= j; ++beg) //if i <= j
+        for(int beg = i; beg <= j; ++beg)
         {
             sum = max_cycle(beg);
             // sum = implement_cache(beg);
             if(sum>max)
-                max = sum;
+            max = sum;
         }
     }
     else
     {
-        for(int beg = j; beg <= i; ++beg) //if j <= i
+        for(int beg = j; beg <= i; ++beg)
         {
             sum = max_cycle(beg);
             // sum = implement_cache(beg);
             if(sum>max)
-                max = sum;
+            max = sum;
         }
     }
-    assert( max!=0);
+    
     return max;
 }
 
@@ -153,7 +153,7 @@ void collatz_solve (istream& r, ostream& w) {
 // -------
 
 #ifdef ONLINE_JUDGE
-    #define NDEBUG
+#define NDEBUG
 #endif
 
 // --------
@@ -165,7 +165,7 @@ void collatz_solve (istream& r, ostream& w) {
 
 int main () {
     using namespace std;
-    for(int i = 0; i < cache_size; ++i) //implement the cache
+    for(int i = 0; i < cache_size; ++i)
     {
         cache[i] = max_cycle(i);
     }
@@ -173,40 +173,25 @@ int main () {
     return 0;}
 
 /*
-% g++-4.7 -pedantic -std=c++11 -Wall Collatz.c++ RunCollatz.c++ -o RunCollatz
-
-
-
-% cat RunCollatz.in
-1 10
-100 200
-201 210
-900 1000
-
-
-
-% RunCollatz < RunCollatz.in > RunCollatz.out
-
-
-
-% cat RunCollatz.out
-1 10 1
-100 200 1
-201 210 1
-900 1000 1
-
-
-
-% doxygen -g
-// That creates the file Doxyfile.
-// Make the following edits to Doxyfile.
-// EXTRACT_ALL            = YES
-// EXTRACT_PRIVATE        = YES
-// EXTRACT_STATIC         = YES
-// GENERATE_LATEX         = NO
-
-
-
-% doxygen Doxyfile
-// That creates the directory html/.
-*/
+ % g++-4.7 -pedantic -std=c++11 -Wall Collatz.c++ RunCollatz.c++ -o RunCollatz
+ % cat RunCollatz.in
+ 1 10
+ 100 200
+ 201 210
+ 900 1000
+ % RunCollatz < RunCollatz.in > RunCollatz.out
+ % cat RunCollatz.out
+ 1 10 1
+ 100 200 1
+ 201 210 1
+ 900 1000 1
+ % doxygen -g
+ // That creates the file Doxyfile.
+ // Make the following edits to Doxyfile.
+ // EXTRACT_ALL            = YES
+ // EXTRACT_PRIVATE        = YES
+ // EXTRACT_STATIC         = YES
+ // GENERATE_LATEX         = NO
+ % doxygen Doxyfile
+ // That creates the directory html/.
+ */
